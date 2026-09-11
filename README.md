@@ -46,16 +46,14 @@ Same idea as ValheimPlus: **source in git**, ship the DLL via Thunderstore.
 
 Thunderstore rejects re-uploads of an existing `version_number` — always bump first.
 
-## Layout (C# cheat-sheet for Python folks)
+## Layout
 
 | File | Role |
 |------|------|
-| `Dry/Dry.csproj` | Project file — like `pyproject.toml` / deps list. Targets **net4.8**, references DLLs in `..\..\Libs`. |
-| `Dry/Dry.cs` | Mod entry point (`BaseUnityPlugin`). `Awake` = constructor-ish startup; Harmony `PatchAll` applies patches. |
-| `Dry/Patches/BlockWetPatch.cs` | Harmony **Prefix** on `SEMan.Internal_AddStatusEffect` — return `false` skips the game method (Wet never applied). |
-| `scripts/build-deploy.ps1` | Local: `dotnet build` + copy into r2modman plugins. |
-| `scripts/create-release.ps1` | Release: Thunderstore.zip (+ optional `gh release`). |
-| `publish/` | Thunderstore package README (+ manifest template). |
+| `Dry/Dry.csproj` | net4.8 project; references publicized DLLs in `..\..\Libs`. |
+| `Dry/Dry.cs` | BepInEx plugin entry; applies Harmony patches on load. |
+| `Dry/Patches/BlockWetPatch.cs` | Blocks Wet for the local player via `SEMan.Internal_AddStatusEffect`. |
+| `scripts/build-deploy.ps1` | Local build + copy into r2modman plugins. |
+| `scripts/create-release.ps1` | Builds `Thunderstore.zip` (+ optional GitHub release). |
+| `publish/` | Thunderstore package README and manifest template. |
 | `resources/icon.png` | Thunderstore icon (256×256). |
-
-BepInEx loads every `*.dll` under `BepInEx/plugins/`. Harmony rewrites game methods at runtime — no Valheim source needed.
