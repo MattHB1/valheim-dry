@@ -2,9 +2,13 @@
 
 Client-side Valheim mod that **blocks the Wet debuff** on your local player (rain / water).
 
+**Package page:** [thunderstore.io/c/valheim/p/DevDonkey/Dry](https://thunderstore.io/c/valheim/p/DevDonkey/Dry/)
+
 ## Install
 
-Install with [r2modman](https://thunderstore.io/) / Thunderstore Mod Manager. Requires **BepInExPack_Valheim**.
+1. Open r2modman / Thunderstore Mod Manager → Valheim.
+2. Online → search `DevDonkey-Dry` → Install (needs **BepInExPack_Valheim**).
+3. Launch the game through the mod manager.
 
 Or manually: put `Dry.dll` in `BepInEx/plugins/`.
 

@@ -2,15 +2,27 @@
 
 Client-side Valheim BepInEx/Harmony mod that blocks the **Wet** debuff on your local player.
 
-## Requirements
+**Thunderstore:** [DevDonkey-Dry](https://thunderstore.io/c/valheim/p/DevDonkey/Dry/)
+
+## Install (players)
+
+1. Open [r2modman](https://r2modman.com/) (or Thunderstore Mod Manager) → Valheim → your profile.
+2. **Online** → search `DevDonkey-Dry` or [open the package page](https://thunderstore.io/c/valheim/p/DevDonkey/Dry/) → **Install with Mod Manager**.
+3. Launch the game **through r2modman**.
+
+Manual: download from Thunderstore and put `Dry.dll` in `BepInEx/plugins/` (needs [BepInExPack_Valheim](https://thunderstore.io/c/valheim/p/denikson/BepInExPack_Valheim/)).
+
+## Develop
+
+### Requirements
 
 - [.NET SDK](https://dotnet.microsoft.com/download) with net4.8 targeting pack
 - Shared libs at `C:\Users\matth\Documents\code\Libs` (same as Server Devcommands; already publicized)
-- [r2modman](https://thunderstore.io/) with a Valheim profile that has BepInEx
+- r2modman with a Valheim profile that has BepInEx
 
 After a Valheim update, refresh Libs with `valheim-dev\scripts\sync-libs.ps1`.
 
-## Build & local deploy
+### Build & local deploy
 
 ```powershell
 .\scripts\build-deploy.ps1
@@ -19,17 +31,20 @@ After a Valheim update, refresh Libs with `valheim-dev\scripts\sync-libs.ps1`.
 
 Copies `Dry.dll` into your r2modman profile plugins folder. Launch Valheim **through r2modman** to test.
 
-## Release (Thunderstore / GitHub)
+### Publish a new Thunderstore version
 
-Same idea as ValheimPlus: **source in git**, ship the DLL via Thunderstore (and optionally GitHub Releases).
+Same idea as ValheimPlus: **source in git**, ship the DLL via Thunderstore.
 
-```powershell
-.\scripts\create-release.ps1
-# optional: also publish a GitHub release with assets
-.\scripts\create-release.ps1 -GitHubRelease
-```
+1. Bump `VERSION` in `Dry/Dry.cs` (and `publish/manifest.json` if you keep it in sync).
+2. Run:
+   ```powershell
+   .\scripts\create-release.ps1
+   # optional: also attach assets on GitHub
+   .\scripts\create-release.ps1 -GitHubRelease
+   ```
+3. Upload `release/<version>/Thunderstore.zip` at [thunderstore.io/c/valheim/create/package](https://thunderstore.io/c/valheim/create/package/) (team **DevDonkey**, package name **Dry**).
 
-Writes `release/<version>/Thunderstore.zip` + `Dry.dll`. Upload the zip at [thunderstore.io/c/valheim/create/package](https://thunderstore.io/c/valheim/create/package/).
+Thunderstore rejects re-uploads of an existing `version_number` — always bump first.
 
 ## Layout (C# cheat-sheet for Python folks)
 
