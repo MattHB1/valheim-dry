@@ -8,7 +8,7 @@ public class Dry : BaseUnityPlugin
 {
   public const string GUID = "matthb1.dry";
   public const string NAME = "Dry";
-  public const string VERSION = "1.0.0";
+  public const string VERSION = "1.0.1";
 
   private void Awake()
   {
