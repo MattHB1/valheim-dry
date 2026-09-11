@@ -1,6 +1,7 @@
 # Build Dry and copy the DLL into the r2modman profile plugins folder.
 # Usage: .\scripts\build-deploy.ps1
 # Optional: .\scripts\build-deploy.ps1 -Profile "Default"
+# For Thunderstore / GitHub release zips, use: .\scripts\create-release.ps1
 
 param(
   [string]$Profile = "Default"

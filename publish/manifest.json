@@ -1,0 +1,9 @@
+{
+  "name": "Dry",
+  "version_number": "1.0.0",
+  "website_url": "https://github.com/MattHB1/valheim-dry",
+  "description": "Client-side mod that blocks the Wet debuff on the local player.",
+  "dependencies": [
+    "denikson-BepInExPack_Valheim-5.4.2350"
+  ]
+}

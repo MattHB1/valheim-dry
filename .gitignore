@@ -4,3 +4,6 @@ obj
 .ionide/symbolCache.db
 *.user
 *.suo
+release/
+publish/*.dll
+*.zip
